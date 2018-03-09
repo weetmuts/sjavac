@@ -3,8 +3,9 @@ The Smart Javac Wrapper JDK8 Backport with Extras!
 This is a backport of the sjavac functionality in the OpenJDK
 with nice extras.
 
-Send any bug-reports to oehrstroem@gmail.com or use the 
-bug tracker for sjavac on bitbucket.org.
+You must set JAVA_HOME to a jdk8 sdk before you can build it or use it!
+
+Send any bug-reports to oehrstroem@gmail.com
 
 Cheers!
 Fredrik Öhrström
