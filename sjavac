@@ -1,0 +1,17 @@
+#!/bin/bash
+if [ "$JAVA_HOME" = "" ]; then
+    case "$OSTYPE" in
+       bsd*)     echo "BSD" ;;
+       darwin*)  JAVA_HOME=$($(dirname $(readlink $(which javac)))/java_home) ;; 
+       linux*)   JAVA_HOME=$(dirname $(dirname $(readlink -f $(which javac)))) ;;
+       solaris*) echo "SOLARIS" ;;
+       *)        echo "unknown: $OSTYPE" ;;
+    esac
+    if [ ! -d "$JAVA_HOME" ]; then
+	echo You have to set JAVA_HOME to run sjavac
+	exit 0
+    fi
+fi
+JAR=$(dirname $0)/sjavac.jar
+$JAVA_HOME/bin/java -ea -classpath $JAVA_HOME/lib/tools.jar:$JAR com.sun.tools.sjavac.Main "$@"
+
